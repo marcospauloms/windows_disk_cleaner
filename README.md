@@ -1,52 +1,21 @@
-@echo off
-cls
-echo ===================================================
-echo          LIMPADOR DE ARQUIVOS TEMPORARIOS          
-echo ===================================================
-echo.
-echo Este script ira eliminar arquivos inuteis do sistema:
-echo 1) Limpeza da pasta TEMP do usuario
-echo 2) Limpeza da pasta TEMP do sistema (Windows)
-echo 3) Limpeza da pasta Prefetch (cache de programas)
-echo.
-echo IMPORTANTE: Salve seus trabalhos antes de prosseguir.
-echo ===================================================
-echo.
+# 💾 Windows Disk Cleaner
 
-:pergunta
-set /p resposta=Deseja prosseguir com a limpeza de disco? (S/N): 
+Este é um script automatizado focado na otimização de espaço e desempenho do sistema operacional. Ele localiza e remove de forma segura gigabytes de "lixo invisível" gerados por caches de programas, logs do sistema e arquivos temporários de instalações antigas que ficam acumulados no Windows.
 
-if /i "%resposta%"=="S" goto executar
-if /i "%resposta%"=="N" goto cancelar
+## 🚀 O que este script faz?
+1. **Limpa a pasta TEMP do usuário:** Apaga arquivos temporários gerados pelo uso diário de navegadores e aplicativos.
+2. **Limpa a pasta TEMP do sistema:** Remove arquivos de cache criados pelo próprio Windows que perderam a utilidade.
+3. **Esvazia o cache Prefetch:** Limpa dados antigos de inicialização de programas que deixam a leitura do disco lenta com o tempo.
 
-echo Opcao invalida. Digite S para Sim ou N para Nao.
-echo.
-goto pergunta
+## 💻 Como baixar e usar no seu PC
 
-:executar
-echo.
-echo [1/3] Limpando arquivos temporarios do usuario...
-del /s /f /q "%temp%\*.*" >nul 2>&1
-for /d %%i in ("%temp%\*") do rmdir /s /q "%%i" >nul 2>&1
+Como este script possui regras estritas de formatação de linha para o terminal do Windows, siga o método abaixo para garantir o funcionamento correto:
 
-echo [2/3] Limpando arquivos temporarios do sistema...
-del /s /f /q "%systemroot%\Temp\*.*" >nul 2>&1
-for /d %%i in ("%systemroot%\Temp\*") do rmdir /s /q "%%i" >nul 2>&1
+1. Baixe o arquivo `limpador_windows.bat` disponível neste repositório.
+2. Mova o arquivo baixado para a sua **Área de Trabalho**.
+3. Clique com o botão direito sobre o arquivo `limpador_windows.bat` e selecione **Executar como Administrador**.
+4. Uma tela de confirmação aparecerá. Digite `S` para iniciar a limpeza ou `N` para cancelar sem alterar nada.
 
-echo [3/3] Limpando cache do Prefetch...
-del /s /f /q "%systemroot%\Prefetch\*.*" >nul 2>&1
-for /d %%i in ("%systemroot%\Prefetch\*") do rmdir /s /q "%%i" >nul 2>&1
+⚠️ **Aviso de segurança:** Arquivos ou documentos que estejam abertos ou em uso no exato momento da execução não serão apagados pelo script, garantindo que nenhum dado importante seja corrompido.
 
-echo.
-echo ===================================================
-echo Limpeza concluida com sucesso! Espaco liberado.
-echo ===================================================
-pause
-exit
-
-:cancelar
-echo.
-echo Operacao cancelada pelo usuario. Nenhuma alteracao feita.
-echo.
-pause
-exit
+⚠️ **Nota para ambiente corporativo:** Este script exige privilégios de administrador. Se você estiver usando um computador empresarial ou de escritório, as políticas de segurança da sua equipe de TI podem bloquear a execução.
