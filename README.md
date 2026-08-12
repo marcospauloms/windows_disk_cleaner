@@ -1,0 +1,1 @@
+# limpador_temp_win
