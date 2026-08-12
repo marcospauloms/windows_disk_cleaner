@@ -1,7 +1,7 @@
-cmd@echo off
+@echo off
 cls
 echo ===================================================
-echo         LIMPADOR DE ARQUIVOS TEMPORARIOS          
+echo          LIMPADOR DE ARQUIVOS TEMPORARIOS          
 echo ===================================================
 echo.
 echo Este script ira eliminar arquivos inuteis do sistema:
